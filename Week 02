@@ -1,0 +1,88 @@
+def main():
+    try:
+       outing_num=int(input("how many senior citizens are going for the outing: "))
+       if outing_num>=10 and outing_num<=36:
+            if outing_num>=10 and outing_num<=14:
+                total_cost=150+(outing_num*14)+(outing_num*21)
+                print("total cost of the outing is",total_cost)
+                cost_per_person=total_cost/outing_num
+                print("cost per person would be ",cost_per_person)
+            elif outing_num>=15 and outing_num<=24:
+                total_cost=190+(outing_num*13.50)+(outing_num*20)
+                print("total cost of the outing is",total_cost)
+                cost_per_person=total_cost/outing_num
+                print("cost per person would be ",cost_per_person) 
+            elif outing_num>=25 and outing_num<=36:
+                total_cost=225+(outing_num*13)+(outing_num*19)
+                print("total cost of the outing is",total_cost)
+                cost_per_person=total_cost/outing_num
+                print("cost per person of the senior citizen is",cost_per_person) 
+       else:
+        print("There are not enough senior citzens for the outing.")
+    except:
+        print("There is an error please try again.")
+    outing(outing_num,total_cost,cost_per_person)
+def outing(outing_num,total_cost,cost_per_person):
+  try:
+    total_senior_citizen=0
+    total_nonSenior_citizen=0
+    nonSenior_citizen_name=[]
+    senior_citizen_name=[]
+    for i in range(outing_num):
+        name=input(f"Enter the name of senior citizen:{i+1} going for outing: ")
+        senior_citizen_name.append(name)
+        amount=int(input(f"Enter the amount {name} have paid: "))
+        total_senior_citizen+=amount
+    if outing_num<14:
+        nonSenior_citizen_outing_num=int(input("enter how many non-senior citizens are going "))
+        if nonSenior_citizen_outing_num+outing_num<=14:
+           for i in range(nonSenior_citizen_outing_num):
+             name=input("Enter name of non-senior citizen going for outing ")
+             nonSenior_citizen_name.append(name)
+             print("you have to pay",cost_per_person)
+             total_nonSenior_citizen+=cost_per_person
+        else:
+           print("the number of non-senior citizen exceeds the limit.")
+    if outing_num>16 and outing_num<24:
+        nonSenior_citizen_outing_num=int(input("enter how many non-senior citizens are going "))
+        if nonSenior_citizen_outing_num+outing_num<=24:
+           for i in range(nonSenior_citizen_outing_num):
+            name=input("Enter name of non-senior citizen going for outing ")
+            nonSenior_citizen_name.append(name)
+            print("you have to pay",cost_per_person)
+            total_nonSenior_citizen+=cost_per_person
+        else:
+           print("the number of non-senior citizen exceeds the limit.")
+    if outing_num>14 and outing_num<36:
+        nonSenior_citizen_outing_num=int(input("enter how many non-senior citizens are going "))
+        if nonSenior_citizen_outing_num+outing_num:
+          for i in range(nonSenior_citizen_outing_num):
+            name=input("Enter name of non-senior citizen going for outing ")
+            nonSenior_citizen_name.append(name)
+            print("you have to pay",cost_per_person)
+            total_nonSenior_citizen+=cost_per_person
+        else:
+           print("the number of non-senior citizen exceeds the limit.")
+    net_total=total_nonSenior_citizen+total_senior_citizen
+    print("The total amount of money collected is",net_total)
+    print("LIST OF PEOPLE ON THE OUTING")
+    for name in senior_citizen_name:
+        print("\t",name)
+    for name in nonSenior_citizen_name:
+        print("\t",name)
+    cost(total_cost,net_total)
+  except ValueError:
+     print("there is value error please enter correct value.")
+  except:
+     print("there is an error please Try again.")
+def cost(total_cost,net_total):
+    profit=net_total-total_cost
+    if profit>0:
+        print("there is profit of",profit)
+    elif profit<0:
+        print("there is loss of",profit)
+    else:
+        print("there is break even.")
+main()
+
+    
