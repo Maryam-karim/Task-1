@@ -3,8 +3,6 @@ unique_3_digit_code_list = []
 rounded_yield_list = {}
 total_weekly_volume = 0
 cows_with_their_corresponding_milk = {}
-
-# Input milk yields for each cow
 for i in range(1, herd_of_cows + 1):
     while True:
         unique_3_digit_code = input("Enter the unique 3 digit identity code for cow {}: ".format(i))
@@ -38,18 +36,12 @@ for i in range(1, herd_of_cows + 1):
 
     cows_with_their_corresponding_milk[unique_3_digit_code] = rounded_yield_total
     total_weekly_volume += rounded_yield_total
-
-# Check for cows with low yield after collecting all data
 for unique_3_digit_code, total_yield in cows_with_their_corresponding_milk.items():
     days_with_low_yield = sum(1 for yield_value in rounded_yield_list[unique_3_digit_code] if yield_value < 12)
     if days_with_low_yield >= 4:
         print("Cow {} has a yield of less than 12 liters of milk for four days or more in the week.".format(unique_3_digit_code))
-
-# Identify cow with the maximum yield
 max_yield_cow = max(cows_with_their_corresponding_milk, key=cows_with_their_corresponding_milk.get)
 max_yield = cows_with_their_corresponding_milk[max_yield_cow]
-
-# Output results
 print(f"The cow with the maximum yield of milk is {max_yield_cow} with a yield of {max_yield}.")
 print("Total weekly volume of milk for the herd is", total_weekly_volume)
 print("Average yield per cow in a week is", total_weekly_volume / herd_of_cows)
