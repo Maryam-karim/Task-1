@@ -13,7 +13,7 @@ def auction_set_up():
              items.append({'item_number':item_number,"description":description,"reserve_price":reserve_price})
              keep_going=input("do you want to enter information of another item. press y for yes and no for termination.")
              
-       if len(items) >= 1:
+       if len(items) >= 10:
             return items
        else:
             print("Items are not enough for the auction. Please add more items.")
